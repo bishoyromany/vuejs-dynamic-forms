@@ -43,6 +43,16 @@
 export default {
     name : 'DynamicForms',
     props : {
+        hidden : '',
+        values : {
+            type : Object,
+            default(){
+                return{
+                    name : 'This is my name',
+                    text : 'This is my Text',
+                }
+            }
+        },
         form : {
             type : Array,
             default(){
@@ -59,7 +69,7 @@ export default {
                         name : 'Name Two',
                         placeholder : 'Please Write Your Name...',
                         class : 'form-control',
-                        column : 'name',
+                        column : 'text',
                         type : 'textarea',
                         value : 'Text Area',
                     }, 
@@ -84,6 +94,10 @@ export default {
             default : 'dark',
         }
     },
+    model: {
+        prop: 'hidden',
+        event: 'update'
+    },
     components : {
         // tinymce,
     },
@@ -93,14 +107,27 @@ export default {
         }
     },
     created(){
+        this.formBack = this.values;
     },
     methods : {
         action(){
-
+            this.$emit('save' , this.formBack);
         }
     },
     computed : {
 
+    },
+    watch : {
+        formBack : {
+            handler(){
+                this.$emit('update' , this.formBack);
+            },
+            deep : true,
+        }
     }
 }
 </script>
+
+<style scoped>
+@import './../styles/style.css';
+</style>

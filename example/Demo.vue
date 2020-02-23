@@ -6,7 +6,7 @@
 
 <script>
 import DynamicForms from '../src/components/DynamicForms.vue'
-import * as lang from '../src/locale/index.js'
+// import './../src/styles/style.css'
 
 const state = {
   date1: new Date()
@@ -19,99 +19,6 @@ export default {
   },
   data () {
     return {
-      styleInput: null,
-      format: 'd MMMM yyyy',
-      disabledDates: {},
-      openDate: null,
-      disabledFn: {
-        customPredictor (date) {
-          if (date.getDate() % 3 === 0) {
-            return true
-          }
-        }
-      },
-      highlightedFn: {
-        customPredictor (date) {
-          if (date.getDate() % 4 === 0) {
-            return true
-          }
-        }
-      },
-      highlighted: {},
-      eventMsg: null,
-      state: state,
-      vModelExample: null,
-      languages: lang,
-      language: 'en'
-    }
-  },
-  computed: {
-    getInputStyle () {
-      return this.styleInput
-    }
-  },
-  methods: {
-    highlightTo (val) {
-      if (typeof this.highlighted.to === 'undefined') {
-        this.highlighted = {
-          to: null,
-          daysOfMonth: this.highlighted.daysOfMonth,
-          from: this.highlighted.from
-        }
-      }
-      this.highlighted.to = val
-    },
-    highlightFrom (val) {
-      if (typeof this.highlighted.from === 'undefined') {
-        this.highlighted = {
-          to: this.highlighted.to,
-          daysOfMonth: this.highlighted.daysOfMonth,
-          from: null
-        }
-      }
-      this.highlighted.from = val
-    },
-    setHighlightedDays (elem) {
-      if (elem.target.value === 'undefined') {
-        return
-      }
-      let highlightedDays = elem.target.value.split(',').map(day => parseInt(day))
-      this.highlighted = {
-        from: this.highlighted.from,
-        to: this.highlighted.to,
-        daysOfMonth: highlightedDays
-      }
-    },
-    setDisabledDays (elem) {
-      if (elem.target.value === 'undefined') {
-        return
-      }
-      let disabledDays = elem.target.value.split(',').map(day => parseInt(day))
-      this.disabledDates = {
-        from: this.disabledDates.from,
-        to: this.disabledDates.to,
-        daysOfMonth: disabledDays
-      }
-    },
-    disableTo (val) {
-      if (typeof this.disabledDates.to === 'undefined') {
-        this.disabledDates = {
-          to: null,
-          daysOfMonth: this.disabledDates.daysOfMonth,
-          from: this.disabledDates.from
-        }
-      }
-      this.disabledDates.to = val
-    },
-    disableFrom (val) {
-      if (typeof this.disabledDates.from === 'undefined') {
-        this.disabledDates = {
-          to: this.disabledDates.to,
-          daysOfMonth: this.disabledDates.daysOfMonth,
-          from: null
-        }
-      }
-      this.disabledDates.from = val
     }
   }
 }
