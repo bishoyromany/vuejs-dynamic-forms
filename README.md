@@ -10,12 +10,8 @@ A datepicker Vue component. Compatible with Vue 2.x
 - [Demo](#demo)
 - [Install](#install)
 - [Usage](#usage)
-- [Date Formatting](#date-formatting)
 - [Props](#available-props)
 - [Events](#events)
-- [Disabled dates](#disabled-dates)
-- [Highlighted dates](#highlighted-dates)
-- [Translations](#translations)
 
 ## Demo
 
@@ -87,6 +83,11 @@ var state = {
 <vueDynamicForms :value="state.form"></vueDynamicForms>
 ```
 
+You Can Use v-model
+``` html
+<vueDynamicForms v-model="data"></vueDynamicForms>
+```
+
 Emits events
 ``` html
 <vueDynamicForms @save="doSomethingInParentComponentFunction">
@@ -96,6 +97,7 @@ Emits events
 | Prop                          | Type            | Default     | Description                              |
 |-------------------------------|-----------------|-------------|------------------------------------------|
 | form                          | Array           | Sample Form | The Form Elements                        |
+| values                        | Object          |Inputs Values| The Form Inputes Values                  |
 | title                         | String          |             | The Form Title                           |
 | button                        | Object          |             | {title,class} of the submit button       |
 | theme                         | String          | dark        | Form Theme light/dark                    |
@@ -107,4 +109,5 @@ These events are emitted on actions in the datepicker
 | Event             | Output     | Description                          |
 |-------------------|------------|--------------------------------------|
 | save              | Form Data  | Form Submited                        |
+| update            | Form Edited| Form Updated                         |
 

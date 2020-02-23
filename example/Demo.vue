@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <DynamicForms />
+    <DynamicForms :theme="'light'" />
   </div>
 </template>
 

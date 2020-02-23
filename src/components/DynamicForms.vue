@@ -1,6 +1,6 @@
 <template>
     <div id="addComponent">
-        <div class="card text-white bg-dark">
+        <div :class="`card ${theme == 'dark' ? 'text-white bg-dark' : 'text-black bg-white'}`">
             <div class="card-header" v-html="title"></div>
             <div class="card-body">
                 <form @submit.prevent="action()">
