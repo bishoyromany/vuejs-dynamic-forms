@@ -5,7 +5,7 @@
 [![Coveralls github](https://img.shields.io/coveralls/github/charliekassel/vuejs-dynamic-forms.svg)](https://coveralls.io/github/charliekassel/vuejs-dynamic-forms?branch=master)
 [![Downloads](https://img.shields.io/npm/dm/vuejs-dynamic-forms.svg)](https://www.npmjs.com/package/vuejs-dynamic-forms)
 
-A datepicker Vue component. Compatible with Vue 2.x
+A Dynamic Forms Generator Vue component. Compatible with Vue 2.x
 
 - [Demo](#demo)
 - [Install](#install)

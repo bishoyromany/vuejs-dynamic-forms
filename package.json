@@ -1,6 +1,6 @@
 {
   "name": "vuejs-dynamic-forms",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A simple Vue.js dynamic-forms component. Supports creating a dyanmic forms with a pretty design using Bootstrap classes",
   "keywords": [
     "vue",
