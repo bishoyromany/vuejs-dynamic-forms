@@ -38,6 +38,12 @@ export default {
   // ...
 }
 ```
+Don't Forget Bootstrap
+``` html
+<style>
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+</style>
+```
 
 Or use directly from a CDN
 ``` html
@@ -46,6 +52,10 @@ Or use directly from a CDN
 </div>
 <script src="https://unpkg.com/vue"></script>
 <script src="https://unpkg.com/vuejs-dynamic-forms"></script>
+<style>
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+</style>
+
 <script>
 const app = new Vue({
   el: '#app',

@@ -6,7 +6,6 @@ import babel from 'rollup-plugin-babel'
 import resolve from 'rollup-plugin-node-resolve'
 import replace from 'rollup-plugin-replace'
 import common from 'rollup-plugin-commonjs'
-import sass from 'rollup-plugin-sass';
 
 export default {
   input: path.join(__dirname, '..', 'example', 'main.js'),
@@ -17,7 +16,6 @@ export default {
     sourcemap: true
   },
   plugins: [
-    sass(),
     vue({
       css: true,
     }),
