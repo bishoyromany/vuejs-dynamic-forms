@@ -31,7 +31,8 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "rollup-plugin-sass": "^1.2.2"
+    "rollup-plugin-sass": "^1.2.2",
+    "vue-tinymce-editor": "^1.6.2"
   },
   "peerDependencies": {
     "vue": "^2.6.10"
