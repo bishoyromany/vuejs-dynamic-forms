@@ -1,8 +1,6 @@
 # Dynamic Forms
 
-[![Travis Build](https://img.shields.io/travis/bishoyromany/vuejs-dynamic-forms.svg)](https://travis-ci.org/bishoyromany/vuejs-dynamic-forms)
 [![Version](https://img.shields.io/npm/v/vuejs-dynamic-forms.svg)](https://www.npmjs.com/package/vuejs-dynamic-forms)
-[![Coveralls github](https://img.shields.io/coveralls/github/bishoyromany/vuejs-dynamic-forms.svg)](https://coveralls.io/github/bishoyromany/vuejs-dynamic-forms?branch=master)
 [![Downloads](https://img.shields.io/npm/dm/vuejs-dynamic-forms.svg)](https://www.npmjs.com/package/vuejs-dynamic-forms)
 
 A Dynamic Forms Generator Vue component. Compatible with Vue 2.x
@@ -73,7 +71,7 @@ const app = new Vue({
 ```
 
 *form* prop if passed should be a Array
-
+*values* prop if passed should be object
 ``` html
 <script>
 var state = {
@@ -87,10 +85,13 @@ var state = {
       show : 'show column for select box',
       value : 'the data should be stored from select box'
     }
-  ]
+  ],
+  values : {
+    columnName : 'value here',
+  }
 }
 </script>
-<vueDynamicForms :value="state.form"></vueDynamicForms>
+<vueDynamicForms :form="state.form" :values="values"></vueDynamicForms>
 ```
 
 You Can Use v-model

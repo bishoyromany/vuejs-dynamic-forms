@@ -1,6 +1,6 @@
 {
   "name": "vuejs-dynamic-forms",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "A simple Vue.js dynamic-forms component. Supports creating a dyanmic forms with a pretty design using Bootstrap classes",
   "keywords": [
     "vue",
@@ -23,6 +23,7 @@
   "bugs": {
     "url": "https://github.com/bishoyromany/vuejs-dynamic-forms/issues"
   },
+  // "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "private": false,
   "license": "MIT",
   "scripts": {

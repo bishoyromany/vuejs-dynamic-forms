@@ -127,6 +127,6 @@ export default {
 }
 </script>
 
-<style scoped>
-@import './../styles/style.css';
+<style lang="scss" scoped>
+//@import './../styles/style.css';
 </style>
