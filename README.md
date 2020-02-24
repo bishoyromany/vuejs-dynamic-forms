@@ -14,9 +14,9 @@ A Dynamic Forms Generator Vue component. Compatible with Vue 2.x
 ## Demo
 
 To view a demo online:
-https://codesandbox.io/s/vue-dynamic-forms-demo-60kyd
+https://bishoyromany.github.io/vuejs-dynamic-forms/demo
 
-To view demo examples locally clone the repo and run `npm install && npm run serve`
+<!-- To view demo locally clone the repo and run `npm install && npm run serve` -->
 
 ## Install
 
