@@ -1,7 +1,7 @@
 {
   "name": "vuejs-dynamic-forms",
   "author": "Bishoy Romany",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A simple Vue.js dynamic-forms component. Supports creating a dyanmic forms with a pretty design using Bootstrap classes",
   "license": "MIT",
   "main": "dist/vuejs-dynamic-forms.js",
@@ -37,6 +37,8 @@
     "build:min": "rollup --config build/rollup.config.js --format umd --file dist/vuejs-dynamic-forms.min.js"
   },
   "dependencies": {
+    "@johmun/vue-tags-input": "^2.1.0",
+    "bootstrap-css-only": "^4.4.1",
     "vue-tinymce-editor": "^1.6.2"
   },
   "peerDependencies": {
@@ -72,7 +74,8 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "no-unused-vars": "off"
+      "no-unused-vars": "off",
+      "valid-typeof" : "off"
     }
   },
   "browserslist": [

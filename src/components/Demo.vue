@@ -27,6 +27,9 @@ export default {
 }
 </script>
 
-<style>
-@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+<style lang="scss" scoped>
+#Demo{
+  max-width: 700px;
+  margin : 50px auto;
+}
 </style>
