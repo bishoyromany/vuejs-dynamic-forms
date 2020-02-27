@@ -21,7 +21,6 @@
                                 :id="f.column" 
                                 :class="f.class ? f.class : 'form-control'">
 
-
                                 <textarea 
                                 v-else-if="f.type == 'textarea'" 
                                 :required="f.required ? '' : false" 
@@ -79,6 +78,25 @@
                             </div>
                         </div>
 
+
+                        <div v-else-if="f.type == 'date'">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label :for="f.column">{{f.name}}</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <vuejsDatepicker 
+                                    :required="f.required"
+                                    :input-class="f.class"
+                                    :bootstrap-styling="true"
+                                    :placeholder="f.placeholder" 
+                                    :language="f.language"
+                                    :format="f.format ? f.format : 'dd MMM yyyy'"
+                                    v-model="formBack[f.column]"></vuejsDatepicker>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-3">
@@ -95,7 +113,8 @@
 import 'bootstrap-css-only';
 import tinymce from 'vue-tinymce-editor';
 import VueTagsInput from '@johmun/vue-tags-input';
-import Multiselect from 'vue-multiselect'
+import Multiselect from 'vue-multiselect';
+import vuejsDatepicker from 'vuejs-datepicker';
 
 export default {
     name : 'DynamicForms',
@@ -192,6 +211,13 @@ export default {
                         placeholder : 'Please Select Your Users',
                         multipleSelect : true,
                         closeOnSelect : false,
+                    },
+                    {
+                        name : "Select Date",
+                        column : 'date',
+                        type : 'date',
+                        placeholder : 'Select Date',
+                        class : 'myClass',
                     }
                 ]
             }
@@ -222,6 +248,7 @@ export default {
         tinymce,
         VueTagsInput,
         Multiselect,
+        vuejsDatepicker,
     },
     data(){
         return{
