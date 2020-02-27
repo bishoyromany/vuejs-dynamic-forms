@@ -39,6 +39,7 @@
   "dependencies": {
     "@johmun/vue-tags-input": "^2.1.0",
     "bootstrap-css-only": "^4.4.1",
+    "vue-multiselect": "^2.1.6",
     "vue-tinymce-editor": "^1.6.2"
   },
   "peerDependencies": {
@@ -75,7 +76,7 @@
     },
     "rules": {
       "no-unused-vars": "off",
-      "valid-typeof" : "off"
+      "valid-typeof": "off"
     }
   },
   "browserslist": [

@@ -20,7 +20,8 @@
                                 v-model="formBack[f.column]" 
                                 :id="f.column" 
                                 :class="f.class ? f.class : 'form-control'">
-                                
+
+
                                 <textarea 
                                 v-else-if="f.type == 'textarea'" 
                                 :required="f.required ? '' : false" 
@@ -28,20 +29,6 @@
                                 v-model="formBack[f.column]" 
                                 :id="f.column" 
                                 :class="f.class ? f.class : 'form-control'"></textarea>
-                                
-                                <select 
-                                v-else-if="f.type == 'selectbox'" 
-                                :type="f.type" 
-                                :required="f.required ? '' : false" 
-                                :placeholder="f.placeholder" 
-                                v-model="formBack[f.column]" 
-                                :id="f.column" 
-                                :class="f.class ? f.class : 'form-control'">
-                                    <option v-for="v in f.items" v-bind:key="v[f.value]" :value="v[f.value]">
-                                        {{v[f.show]}}
-                                    </option>
-                                </select>
-
                             </div>
                         </div>
 
@@ -72,6 +59,26 @@
                             </div>
                         </div>
 
+                        <div v-else-if="f.type == 'selectbox'">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label :for="f.column">{{f.name}}</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <Multiselect 
+                                    :allow-empty="!f.required"
+                                    :searchable="f.seachable ? f.searchale : true"
+                                    :placeholder="f.placeholder" 
+                                    v-model="formBack[f.column]"
+                                    :track-by="f.value" :label="f.show"
+                                    :close-on-select="f.closeOnSelect"
+                                    :preselect-first="f.selectFirst"
+                                    :multiple="f.multipleSelect"
+                                    :options="f.items"></Multiselect>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-3">
@@ -88,6 +95,7 @@
 import 'bootstrap-css-only';
 import tinymce from 'vue-tinymce-editor';
 import VueTagsInput from '@johmun/vue-tags-input';
+import Multiselect from 'vue-multiselect'
 
 export default {
     name : 'DynamicForms',
@@ -142,6 +150,48 @@ export default {
                         autocomplete : ['text' , 'and data' , 1,2, 'and three' , 'etcutra'],
                         placeholder : 'Write your tags',
                         addOnlyFromAutocomplete : false,
+                    },
+                    {
+                        name : 'Select One User',
+                        items : [
+                            {
+                                name : 'User 1',
+                                id : 1
+                            },
+                            {
+                                name : 'User 2',
+                                id : 2
+                            }
+                        ],
+                        show : 'name',
+                        value : 'id',
+                        type : 'selectbox',
+                        column : 'user',
+                        placeholder : 'Please Select Your Users'
+                    },
+                    {
+                        name : 'Select Multiple Users',
+                        items : [
+                            {
+                                name : 'User 1',
+                                id : 1
+                            },
+                            {
+                                name : 'User 2',
+                                id : 2
+                            },
+                            {
+                                name : 'User 3',
+                                id : 3
+                            }
+                        ],
+                        show : 'name',
+                        value : 'id',
+                        column : 'users',
+                        type : 'selectbox',
+                        placeholder : 'Please Select Your Users',
+                        multipleSelect : true,
+                        closeOnSelect : false,
                     }
                 ]
             }
@@ -171,12 +221,13 @@ export default {
     components : {
         tinymce,
         VueTagsInput,
+        Multiselect,
     },
     data(){
         return{
             formBack : [],
             formData : this.form,
-            normalInputs : ['text' , 'email' , 'checkbox' , 'radio' , 'selectbox' , 'password' , 'textarea'],
+            normalInputs : ['text' , 'email' , 'checkbox' , 'radio' , 'password' , 'textarea'],
         }
     },
     created(){
@@ -225,6 +276,8 @@ export default {
     }
 }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
 #VuejsDynamicForms{
