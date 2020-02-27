@@ -5,7 +5,7 @@
             <div class="card-body">
                 <form @submit.prevent="action()">
 
-                    <div class="form-group" v-for="f in form" v-bind:key="f.name">
+                    <div class="form-group" v-for="f in formData" v-bind:key="f.name">
 
                         <div class="row" v-if="normalInputs.includes(f.type)">
                             <div class="col-md-3">
@@ -58,9 +58,16 @@
                                     <label :for="f.column">{{f.name}}</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <VueTagsInput :placeholder="f.placeholder" v-model="form[f.subColumn]" :tags="form[f.column]" 
-                                    @tags-changed="newTags => form[f.column] = newTags" 
-                                    :autocomplete-items='filterData(f.autocomplete , form[f.subColumn])' />
+                                    <VueTagsInput 
+                                    :placeholder="f.placeholder" 
+                                    v-model="formData[f.subColumn]" 
+                                    :tags="formBack[f.column]" 
+                                    :allow-edit-tags="true"
+                                    :add-only-from-autocomplete="formData[f.addOnlyFromAutocomplete]"
+                                    @tags-changed="newTags => formBack[f.column] = newTags.map(item => {
+                                        return item.text;
+                                    })" 
+                                    :autocomplete-items='filterData(f.autocomplete , formData[f.subColumn])' />
                                 </div>
                             </div>
                         </div>
@@ -94,7 +101,8 @@ export default {
                 return{
                     name : 'This is my name',
                     text : 'This is my Text',
-                    editor : '<p>This is my HTML Editor Data</p>'
+                    editor : '<p>This is my HTML Editor Data</p>',
+                    tags : ['this are my default tags' , 'my subtags'],
                 }
             }
         },
@@ -132,7 +140,8 @@ export default {
                         column : 'tags',
                         subColumn : 'tag',
                         autocomplete : ['text' , 'and data' , 1,2, 'and three' , 'etcutra'],
-                        placeholder : 'Write your tags'
+                        placeholder : 'Write your tags',
+                        addOnlyFromAutocomplete : false,
                     }
                 ]
             }
@@ -166,23 +175,40 @@ export default {
     data(){
         return{
             formBack : [],
+            formData : this.form,
             normalInputs : ['text' , 'email' , 'checkbox' , 'radio' , 'selectbox' , 'password' , 'textarea'],
         }
     },
     created(){
         this.formBack = this.values;
+        this.fixFormData();
     },
     methods : {
         action(){
             this.$emit('save' , this.formBack);
         },
         /**
+         * fix form data to match our needs
+         */
+        fixFormData(){
+            // this.formData = this.formData.map(item => {
+            //     if(item.autocomplete != undefined){
+            //         item.autocomplete = item.autocomplete.map(i => {
+            //             return String(i);
+            //         });
+            //     }
+
+            //     return item;
+            // });
+        },
+        /**
          * filter data for autocomplete
          */
         filterData(items , text){
+            text = String(text);
             let newText = text ? text.toLowerCase() : '';
             return items.filter(item => {
-                return String(item).toLowerCase().indexOf(newText) !== -1
+                return String(item).toLowerCase().indexOf(newText) !== -1;
             });
         }
     },
