@@ -1,5 +1,5 @@
 <template>
-    <div id="VuejsDynamicForms">
+    <div id="VuejsDynamicForms" :class="theme">
         <div :class="`card ${theme == 'dark' ? 'text-white bg-dark' : 'text-black bg-white'}`">
             <div class="card-header" v-html="title"></div>
             <div class="card-body">
@@ -121,7 +121,7 @@
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-3">
-                            <button type="submit" :class="button.class" v-html="button.title"></button>
+                            <button type="submit" :class="button.class ? button.class : 'btn btn-success btn-block'" v-html="button.title"></button>
                         </div>
                     </div>
                 </form>
@@ -287,7 +287,7 @@ export default {
         return{
             formBack : [],
             formData : this.form,
-            normalInputs : ['text' , 'email' , 'checkbox' , 'radio' , 'password' , 'textarea'],
+            normalInputs : ['text' , 'email' , 'checkbox' , 'radio' , 'password' , 'textarea' , 'file'],
         }
     },
     created(){
@@ -341,8 +341,44 @@ export default {
 
 <style lang="scss">
 #VuejsDynamicForms{
+    &.dark{
+        .vdp-datepicker__calendar{
+            background: #343a40;
+            border: 1px solid #262a2e;
+            // display : block !important;
+            header{
+                .prev{
+                    &:after{
+                        border-right: 10px solid #FFF;
+                    }
+                }
+                .next{
+                    &:after{
+                        border-left: 10px solid #FFF;
+                    }
+                }   
+
+                & > span{
+                    &:hover{
+                        background: #000;
+                    }
+                }
+            }
+        }
+
+        .vue-tags-input{
+            .ti-autocomplete{
+                ul{
+                    li{
+                        color: #000 !important;
+                    }
+                }
+            }
+        }
+    }
     .vue-tags-input{
         max-width : 100%;
+
     }
     .verte{
         & > button{

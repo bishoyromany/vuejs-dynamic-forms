@@ -1,6 +1,8 @@
 <template>
     <div id="Demo">
-        <DynamicForms :theme="'light'" v-model="formData" :form="form" :values="values" />
+        <h3 class="toggleMode" @click="toggleDarkMode">Toggle Dark Mode</h3>
+
+        <DynamicForms v-model="formData" :title="title" :form="form" :values="values" :theme="theme" :button="button" />
 
         <h3 class="title">Form Result</h3>
         <pre>
@@ -23,7 +25,7 @@ export default {
   },
   data () {
     return {
-      formData : {},
+      title : 'My title with <strong>HTML</strong>',
       form : [
         {
           name : 'Name',
@@ -121,6 +123,17 @@ export default {
         editor : '<p>This is my HTML Editor Data</p>',
         tags : ['this are my default tags' , 'my subtags'],
       },
+      button : {
+        title : 'My Button Content',
+        class : 'btn btn-success btn-block myOtherClasses',
+      },
+      formData : {},
+      theme : 'light',
+    }
+  },
+  methods : {
+    toggleDarkMode(){
+      this.theme = this.theme == 'light' ? 'dark' : 'light';
     }
   }
 }
@@ -141,6 +154,10 @@ export default {
   .title{
     text-align: center;
     margin-top : 20px;
+  }
+  .toggleMode{
+    margin-bottom : 30px;
+    text-align : center;
   }
 }
 </style>
