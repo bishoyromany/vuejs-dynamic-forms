@@ -7,7 +7,7 @@
 
                     <div class="form-group" v-for="f in formData" v-bind:key="f.name">
 
-                        <div class="row" v-if="normalInputs.includes(f.type)">
+                        <div class="row" v-if="normalInputs.includes(f.type)" :class="f.class+'-container'">
                             <div class="col-md-3">
                                 <label :for="f.column">{{f.name}}</label>
                             </div>
@@ -32,13 +32,13 @@
                         </div>
 
 
-                        <div v-else-if="f.type == 'editor'">
+                        <div v-else-if="f.type == 'editor'" :class="f.class+'-container'">
                             <label :for="f.column">{{f.name}}</label>
                             <tinymce v-model="formBack[f.column]" :id="f.column" class="tinymce"></tinymce>
                         </div>
 
 
-                        <div v-else-if="f.type == 'tag'">
+                        <div v-else-if="f.type == 'tag'" :class="f.class+'-container'">
                             <div class="row">
                                 <div class="col-md-3">
                                     <label :for="f.column">{{f.name}}</label>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <div v-else-if="f.type == 'selectbox'">
+                        <div v-else-if="f.type == 'selectbox'" :class="f.class+'-container'">
                             <div class="row">
                                 <div class="col-md-3">
                                     <label :for="f.column">{{f.name}}</label>
@@ -79,7 +79,7 @@
                         </div>
 
 
-                        <div v-else-if="f.type == 'date'">
+                        <div v-else-if="f.type == 'date'" :class="f.class+'-container'">
                             <div class="row">
                                 <div class="col-md-3">
                                     <label :for="f.column">{{f.name}}</label>
@@ -98,7 +98,7 @@
                         </div>
 
 
-                        <div v-else-if="f.type == 'color'">
+                        <div v-else-if="f.type == 'color'" :class="f.class+'-container'">
                             <div class="row">
                                 <div class="col-md-3">
                                     <label :for="f.column">{{f.name}}</label>
