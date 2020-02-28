@@ -97,6 +97,27 @@
                             </div>
                         </div>
 
+
+                        <div v-else-if="f.type == 'color'">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label :for="f.column">{{f.name}}</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <verte
+                                        :required="f.required"
+                                        :class="f.class"
+                                        :placeholder="f.placeholder" 
+                                        v-model="formBack[f.column]">
+                                        <template>
+                                            {{f.placeholder}}
+                                            <svg viewBox="0 0 24 24" style="width : auto;" class="verte__icon"><pattern id="checkerboard" width="6" height="6" patternUnits="userSpaceOnUse" fill="FFF"><rect fill="#7080707f" x="0" width="3" height="3" y="0"></rect><rect fill="#7080707f" x="3" width="3" height="3" y="3"></rect></pattern><circle cx="12" cy="12" r="12" fill="url(#checkerboard)"></circle><circle cx="12" cy="12" r="12"></circle></svg>
+                                        </template>
+                                    </verte>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-3">
@@ -115,6 +136,8 @@ import tinymce from 'vue-tinymce-editor';
 import VueTagsInput from '@johmun/vue-tags-input';
 import Multiselect from 'vue-multiselect';
 import vuejsDatepicker from 'vuejs-datepicker';
+import verte from 'verte';
+import 'verte/dist/verte.css';
 
 export default {
     name : 'DynamicForms',
@@ -218,6 +241,15 @@ export default {
                         type : 'date',
                         placeholder : 'Select Date',
                         class : 'myClass',
+
+                    },
+                    {
+                        name : "Select Color",
+                        column : 'color',
+                        type : 'color',
+                        placeholder : 'Select color',
+                        class : 'myClass',
+
                     }
                 ]
             }
@@ -249,6 +281,7 @@ export default {
         VueTagsInput,
         Multiselect,
         vuejsDatepicker,
+        verte,
     },
     data(){
         return{
@@ -310,6 +343,11 @@ export default {
 #VuejsDynamicForms{
     .vue-tags-input{
         max-width : 100%;
+    }
+    .verte{
+        & > button{
+            width : 100%;
+        }
     }
 }
 </style>
