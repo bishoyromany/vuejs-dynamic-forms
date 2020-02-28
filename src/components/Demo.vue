@@ -158,6 +158,7 @@ export default {
   .toggleMode{
     margin-bottom : 30px;
     text-align : center;
+    cursor : pointer;
   }
 }
 </style>

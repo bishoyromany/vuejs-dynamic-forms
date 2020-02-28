@@ -1,7 +1,7 @@
 {
   "name": "vuejs-dynamic-forms",
   "author": "Bishoy Romany",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple Vue.js dynamic-forms component. Supports creating a dyanmic forms with a pretty design using Bootstrap classes",
   "license": "MIT",
   "main": "dist/vuejs-dynamic-forms.js",
