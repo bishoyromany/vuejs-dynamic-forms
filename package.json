@@ -48,7 +48,7 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.10",
     "rollup": "^1.17.0",
